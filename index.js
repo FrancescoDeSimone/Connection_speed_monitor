@@ -2,7 +2,6 @@ const spawn = require('child_process').spawn
 const express = require('express')
 const NoSQL = require('nosql');
 const db = NoSQL.load('./database.nosql');
-const Chart = require('chartjs')
 
 
 const speedTest =
