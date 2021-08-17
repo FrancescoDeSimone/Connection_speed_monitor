@@ -6,5 +6,5 @@ services:
         build: .
         volumes:
           - db:/speed_monitor/database.nosql
-  volumes:
-    db
+volumes:
+    db:

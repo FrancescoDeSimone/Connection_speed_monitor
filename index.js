@@ -46,6 +46,6 @@ app.listen(port, () => {
     console.log(d)
     db.insert(d)
     console.log("STOP")
-  }, 1 * 60 * 1000)
+  }, 30 * 60 * 1000)
   console.log(`Example app listening at http://localhost:${port}`)
 })
