@@ -1,0 +1,58 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <div>
+    <script src="https://cdn.plot.ly/plotly-2.3.1.min.js"></script>
+    <div id="download" style="width:600px;height:250px;"></div>
+    <div id="upload" style="width:600px;height:250px;"></div>
+    <div id="ping" style="width:600px;height:250px;"></div>
+
+    <script>
+      var d = JSON.parse(atob("<%= timeseries %>"))
+      download = document.getElementById('download');
+      upload = document.getElementById('upload');
+      ping = document.getElementById('ping');
+
+
+      Plotly.newPlot(download, [{
+        x: d.map(x => { 
+                  t = new Date(x.timestamp)
+                  return `${t.getFullYear()}/${t.getDate()}/${t.getHours()}:${t.getMinutes()}::${t.getSeconds()}`
+                  }),
+        y: d.map(y => y.download)
+      }], {
+        margin: {
+          t: 0
+        }
+      });
+      Plotly.newPlot(upload, [{
+        x: d.map(x => {
+                  t = new Date(x.timestamp)
+                  return `${t.getFullYear()}/${t.getDate()}/${t.getHours()}:${t.getMinutes()}::${t.getSeconds()}`
+               }),
+        y: d.map(y => y.upload)
+      }], {
+        margin: {
+          t: 0
+        }
+      });
+
+      Plotly.newPlot(ping, [{
+        x: d.map(x => {
+                  t = new Date(x.timestamp)
+                  return `${t.getFullYear()}/${t.getDate()}/${t.getHours()}:${t.getMinutes()}::${t.getSeconds()}`
+               }),
+        y: d.map(y => y.ping)
+      }], {
+        margin: {
+          t: 0
+        }
+      });
+    </script>
+  </div>
+</body>
+
+</html>
